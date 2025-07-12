@@ -1241,11 +1241,11 @@ st.markdown(
 )
 
 if aba_selecionada == "Ao Vivo":
-    st.subheader("🔴 Jogos Ao Vivo")
-    exibir_estatisticas_partidas(df_live_display, "Jogos Ao Vivo")
+    st.subheader("🔴 Operar Ao Vivo")
+    exibir_estatisticas_partidas(df_live_display, "Operar Ao Vivo")
 elif aba_selecionada == "Resultados":
-    st.subheader("📜 Resultados Históricos")
-    exibir_estatisticas_partidas(df_resultados, "Resultados Históricos")
+    st.subheader("📜 Resultados das Partidas")
+    exibir_estatisticas_partidas(df_resultados, "Resultados das Partidas")
 elif aba_selecionada == "Radar FIFA":
     st.subheader("📊 Radar FIFA - Tendências por Liga")
     st.write("Análise da frequência de Linhas Over HT & FT de cada liga em tempo real.")
