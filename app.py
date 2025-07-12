@@ -1,4 +1,5 @@
-# Vagner S.
+# Vagner S. Created
+# NeskiFifa Edited
 
 from __future__ import annotations
 import requests
@@ -29,41 +30,41 @@ HEADERS = {
     )
 }
 COMPETICOES_PERMITIDAS = {
-    "H2H GG League - 8 Minutos",
-    "Battle Volta - 6 Minutos",
-    "GT Leagues - 12 Minutos",
-    "Battle - 8 Minutos",
+    "E-soccer - H2H GG League - 8 minutos de jogo",
+    "Esoccer Battle Volta - 6 Minutos de Jogo",
+    "E-soccer - GT Leagues - 12 mins de jogo",
+    "E-soccer - Battle - 8 minutos de jogo",
 }
 
 # Critérios para o Radar FIFA
 CRITERIOS_HT = {
-    "0.5 HT": {"min": 1.80, "max": float('inf')},
-    "1.5 HT": {"min": 2.40, "max": float('inf')},
-    "2.5 HT": {"min": 2.95, "max": float('inf')},
+    "0.5 HT": {"min": 1.70, "max": float('inf')},
+    "1.5 HT": {"min": 2.20, "max": float('inf')},
+    "2.5 HT": {"min": 2.75, "max": float('inf')},
 }
 
 CRITERIOS_FT = {
-    "0.5 FT": {"min": 2.20, "max": float('inf')},
-    "1.5 FT": {"min": 2.60, "max": float('inf')},
-    "2.5 FT": {"min": 3.65, "max": float('inf')},
-    "3.5 FT": {"min": 4.70, "max": float('inf')},
-    "4.5 FT": {"min": 5.90, "max": float('inf')},
-    "5.5 FT": {"min": 6.90, "max": float('inf')},
+    "0.5 FT": {"min": 2.00, "max": float('inf')},
+    "1.5 FT": {"min": 2.40, "max": float('inf')},
+    "2.5 FT": {"min": 3.45, "max": float('inf')},
+    "3.5 FT": {"min": 4.50, "max": float('inf')},
+    "4.5 FT": {"min": 5.70, "max": float('inf')},
+    "5.5 FT": {"min": 6.70, "max": float('inf')},
 }
 
 def sugerir_over_ft(media_gols_ft: float) -> str:
     """Retorna a sugestão para Over FT com base na média de gols FT."""
-    if media_gols_ft >= 6.90:
+    if media_gols_ft >= 6.70:
         return "Over 5.5 FT"
-    elif media_gols_ft >= 5.90:
+    elif media_gols_ft >= 5.70:
         return "Over 4.5 FT"
-    elif media_gols_ft >= 4.70:
+    elif media_gols_ft >= 4.50:
         return "Over 3.5 FT"
-    elif media_gols_ft >= 3.65:
+    elif media_gols_ft >= 3.45:
         return "Over 2.5 FT"
-    elif media_gols_ft >= 2.60:
+    elif media_gols_ft >= 2.40:
         return "Over 1.5 FT"
-    elif media_gols_ft >= 2.20:
+    elif media_gols_ft >= 2.00:
         return "Over 0.5 FT"
     else:
         return "Sem Entrada"
@@ -129,8 +130,8 @@ def buscar_resultados() -> pd.DataFrame:
         df = df.rename(
             columns={
                 "Campeonato": "Liga",
-                "Jogador 1": "Casa",
-                "Jogador 2": "Fora",
+                "Jogador 1": "Mandante",
+                "Jogador 2": "Visitante",
                 "Placar": "Placar Final",
             }
         )
@@ -173,7 +174,7 @@ def buscar_resultados() -> pd.DataFrame:
         df = df.drop(columns=[c for c in ("Placar HT", "Placar Final") if c in df.columns])
 
         ordem = [
-            "Data", "Liga", "Casa", "Fora",
+            "Data", "Liga", "Mandante", "Visitante",
             "Mandante HT", "Visitante HT", "Total HT",
             "Mandante FT", "Visitante FT", "Total FT",
         ]
@@ -200,8 +201,8 @@ def calcular_estatisticas_jogador(df: pd.DataFrame, jogador: str, liga: str) -> 
         return zeros.copy()
 
     # Filtra por jogador e liga específica
-    jm = df[(df["Casa"] == jogador) & (df["Liga"] == liga)]
-    jv = df[(df["Fora"] == jogador) & (df["Liga"] == liga)]
+    jm = df[(df["Mandante"] == jogador) & (df["Liga"] == liga)]
+    jv = df[(df["Visitante"] == jogador) & (df["Liga"] == liga)]
 
     s = zeros.copy()
     s["jogos_total"] = len(jm) + len(jv)
@@ -280,8 +281,8 @@ def calcular_estatisticas_todos_jogadores(df_resultados: pd.DataFrame) -> pd.Dat
 
     # Itera sobre cada linha do DataFrame de resultados
     for _, row in df_resultados.iterrows():
-        mandante = row["Casa"]
-        visitante = row["Fora"]
+        mandante = row["Mandante"]
+        visitante = row["Visitante"]
         liga = row["Liga"]
 
         # Adiciona a liga ao conjunto de ligas atuantes para ambos os jogadores
@@ -1240,9 +1241,9 @@ st.markdown(
 )
 
 if aba_selecionada == "Ao Vivo":
-    st.subheader("Operar Ao Vivo")
+    st.subheader("🔴 Jogos Ao Vivo")
     exibir_estatisticas_partidas(df_live_display, "Jogos Ao Vivo")
-elif aba_selecionada == "Resultados das Partidas":
+elif aba_selecionada == "Resultados":
     st.subheader("📜 Resultados Históricos")
     exibir_estatisticas_partidas(df_resultados, "Resultados Históricos")
 elif aba_selecionada == "Radar FIFA":
@@ -1251,9 +1252,9 @@ elif aba_selecionada == "Radar FIFA":
     st.markdown("---")
     st.markdown("---")
     exibir_radar_fifa(df_radar)
-elif aba_selecionada == "Ranking Atual":
+elif aba_selecionada == "Rankings":
     exibir_rankings(df_stats_base)
-elif aba_selecionada == "Sobre o Projeto":
+elif aba_selecionada == "Sobre":
     exibir_sobre()
 
 # Incrementar a flag para o próximo refresh
