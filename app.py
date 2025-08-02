@@ -1563,7 +1563,7 @@ def app():
         initial_sidebar_state="expanded",
     )
 
-    st.title("🌡️ Future Stats - FIFA")
+    st.title("🚀 Future Stats - FIFA 🔞")
     brasil_timezone = pytz.timezone("America/Sao_Paulo")
     current_time_br = datetime.now(brasil_timezone).strftime("%H:%M:%S")
     st.markdown(f"**Horário Atual:** {current_time_br}")
@@ -1585,7 +1585,7 @@ def app():
 
     # Aba 1: Ao Vivo
     with tab1:
-        st.header("🎮 FIFA")
+        st.header("Próximos Jogos 🎮")
 
         # Configuração CSS personalizada para eliminar espaços brancos
         st.markdown("""
