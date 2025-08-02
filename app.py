@@ -1082,8 +1082,8 @@ def calcular_radar_fifa(df_live_clean: pd.DataFrame) -> pd.DataFrame:
     # Ordena as colunas para exibição (com as novas colunas primeiro)
     colunas_radar_ordenadas = [
                                   "Liga",
-                                  "Média Gols HT",
-                                  "Média Gols FT"
+                                  "Média HT",
+                                  "Média FT"
                               ] + list(CRITERIOS_HT.keys()) + list(CRITERIOS_FT.keys())
 
     df_radar = pd.DataFrame(resultados_radar)
@@ -1091,7 +1091,7 @@ def calcular_radar_fifa(df_live_clean: pd.DataFrame) -> pd.DataFrame:
     # Garante que todas as colunas existam (preenche com 0% se não existirem)
     for col in colunas_radar_ordenadas:
         if col not in df_radar.columns:
-            if col in ["Média Gols HT", "Média Gols FT"]:
+            if col in ["Média HT", "Média FT"]:
                 df_radar[col] = "0.00"
             else:
                 df_radar[col] = "0%"
