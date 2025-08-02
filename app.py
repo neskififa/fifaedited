@@ -1558,15 +1558,15 @@ def generate_ai_prediction(df_resultados: pd.DataFrame) -> None:
 
 def app():
     st.set_page_config(
-        page_title="INIMIGOS DA 365",
+        page_title="Future Stats",
         layout="wide",
         initial_sidebar_state="expanded",
     )
 
-    st.title("💀 INIMIGOS DA 365")
+    st.title("🌡️ Future Stats - FIFA")
     brasil_timezone = pytz.timezone("America/Sao_Paulo")
     current_time_br = datetime.now(brasil_timezone).strftime("%H:%M:%S")
-    st.markdown(f"**Última atualização:** {current_time_br}")
+    st.markdown(f"**Horário Atual:** {current_time_br}")
 
     # Auto-refresh every 60 seconds
     st_autorefresh(interval=60 * 1000, key="data_refresh")
@@ -1580,12 +1580,12 @@ def app():
 
     # Reordenar as abas
     tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(
-        ["📊 Ao Vivo", "🎯 Radar FIFA", "💡 Dicas Inteligentes", "🤖 Previsão IA", "🔍 Análise Manual", "💰 Ganhos & Perdas"]
+        ["📊 Jogos Ao Vivos", "🎯 Radar FIFA", "💡 Previsões Individuais", "🤖 Previsão da IA", "🔍 Análise Individual", "💰 Ganhos & Perdas"]
     )
 
     # Aba 1: Ao Vivo
     with tab1:
-        st.header("🎮 Cronograma FIFA")
+        st.header("🎮 FIFA")
 
         # Configuração CSS personalizada para eliminar espaços brancos
         st.markdown("""
