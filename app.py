@@ -1579,7 +1579,7 @@ def app():
     df_stats_all_players = calcular_estatisticas_todos_jogadores(df_resultados)
 
     # Reordenar as abas
-    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(
+    tab1, tab2, tab5, tab6 = st.tabs(
         ["📊 Jogos Ao Vivos", "🎯 Radar FIFA", "💡 Previsões Individuais", "🤖 Previsão da IA", "🔍 Análise Individual", "💰 Ganhos & Perdas"]
     )
 
