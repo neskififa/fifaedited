@@ -1700,13 +1700,6 @@ def app():
         else:
             st.info("Nenhum dado para o Radar FIFA.")
 
-    # Aba 3: Dicas Inteligentes
-    with tab3:
-        generate_smart_tips(df_resultados)
-
-    # Aba 4: Previsão IA
-    with tab4:
-        generate_ai_prediction(df_resultados)
 
     # Aba 5: Análise Manual
     with tab5:
