@@ -39,34 +39,34 @@ COMPETICOES_PERMITIDAS = {
 
 # Critérios para o Radar FIFA
 CRITERIOS_HT = {
-    "0.5 HT": {"min": 1.70, "max": float('inf')},
-    "1.5 HT": {"min": 2.20, "max": float('inf')},
-    "2.5 HT": {"min": 2.75, "max": float('inf')},
+    "0.5 HT": {"min": 1.80, "max": float('inf')},
+    "1.5 HT": {"min": 2.40, "max": float('inf')},
+    "2.5 HT": {"min": 2.90, "max": float('inf')},
 }
 
 CRITERIOS_FT = {
-    "0.5 FT": {"min": 2.00, "max": float('inf')},
-    "1.5 FT": {"min": 2.40, "max": float('inf')},
-    "2.5 FT": {"min": 3.45, "max": float('inf')},
+    "0.5 FT": {"min": 2.10, "max": float('inf')},
+    "1.5 FT": {"min": 2.60, "max": float('inf')},
+    "2.5 FT": {"min": 3.80, "max": float('inf')},
     "3.5 FT": {"min": 4.50, "max": float('inf')},
-    "4.5 FT": {"min": 5.70, "max": float('inf')},
-    "5.5 FT": {"min": 6.70, "max": float('inf')},
+    "4.5 FT": {"min": 5.80, "max": float('inf')},
+    "5.5 FT": {"min": 6.90, "max": float('inf')},
 }
 
 
 def sugerir_over_ft(media_gols_ft: float) -> str:
     """Retorna a sugestão para Over FT com base na média de gols FT."""
-    if media_gols_ft >= 6.70:
+    if media_gols_ft >= 6.90:
         return "Over 5.5 FT"
-    elif media_gols_ft >= 5.70:
+    elif media_gols_ft >= 5.80:
         return "Over 4.5 FT"
     elif media_gols_ft >= 4.50:
         return "Over 3.5 FT"
-    elif media_gols_ft >= 3.45:
+    elif media_gols_ft >= 3.80:
         return "Over 2.5 FT"
-    elif media_gols_ft >= 2.40:
+    elif media_gols_ft >= 2.60:
         return "Over 1.5 FT"
-    elif media_gols_ft >= 2.00:
+    elif media_gols_ft >= 2.10:
         return "Over 0.5 FT"
     else:
         return "Sem Entrada"
