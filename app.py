@@ -1635,17 +1635,7 @@ def app():
         </style>
         """, unsafe_allow_html=True)
 
-        # Container para os botões
-        st.markdown('<div class="button-container">', unsafe_allow_html=True)
 
-        col1, col2 = st.columns([1, 3])
-        with col1:
-            if st.button("🔄 Resetar Filtros", key="reset_filters"):
-                st.session_state.grid_key = str(time.time())
-        with col2:
-            if st.button("📊 Atualizar Dados", key="refresh_data"):
-                st.cache_data.clear()
-                st.rerun()
 
         st.markdown('</div>', unsafe_allow_html=True)
 
@@ -1744,15 +1734,15 @@ def app():
         num_games_h2h = st.number_input(
             "Número de últimos confrontos diretos a analisar (máx. 10):",
             min_value=1,
-            max_value=10,
-            value=10,
+            max_value=30,
+            value=30,
             key="num_games_h2h"
         )
         num_games_individual = st.number_input(
             "Número de últimos jogos individuais a analisar (máx. 20):",
             min_value=1,
-            max_value=20,
-            value=10,
+            max_value=30,
+            value=30,
             key="num_games_individual"
         )
         if st.button("Analisar Confronto e Desempenho", key="analyze_button"):
