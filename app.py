@@ -1580,7 +1580,7 @@ def app():
 
     # Reordenar as abas
     tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(
-        ["📊 Jogos Ao Vivos", "🎯 Radar FIFA", "🔍 Análise Individual", "💰 Ganhos & Perdas"]
+        ["📊 Jogos Ao Vivos", "🎯 Radar FIFA", "💡 Previsões Individuais", "🤖 Previsão da IA", "🔍 Análise Individual", "💰 Ganhos & Perdas"]
     )
 
     # Aba 1: Ao Vivo
