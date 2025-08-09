@@ -1580,7 +1580,7 @@ def app():
 
     # Reordenar as abas
     tab1, tab2, tab5, tab6 = st.tabs(
-        ["📊 Jogos Ao Vivos", "🎯 Radar FIFA","🔍 Análise Individual", "💰 Ganhos & Perdas"]
+        ["📊 Jogos Ao Vivos", "🎯 Radar FIFA","🔍 Análise Individual", "💰 Ganhos & Perdas / Termômetro de Jogador"]
     )
 
     # Aba 1: Ao Vivo
@@ -1703,7 +1703,7 @@ def app():
 
     # Aba 5: Análise Manual
     with tab5:
-        st.header("🔍 Análise Manual de Confrontos e Desempenho Individual")
+        st.header("🔍 Análise Confrontos Diretos e Desempenho Individual")
         st.write(
             "Insira os nomes dos jogadores para analisar seus confrontos diretos recentes e o desempenho individual nas últimas partidas."
         )
@@ -1725,14 +1725,14 @@ def app():
                 key="player2_manual"
             )
         num_games_h2h = st.number_input(
-            "Número de últimos confrontos diretos a analisar (máx. 10):",
+            "Número de últimos confrontos diretos a analisar (máx. 30):",
             min_value=1,
             max_value=30,
             value=30,
             key="num_games_h2h"
         )
         num_games_individual = st.number_input(
-            "Número de últimos jogos individuais a analisar (máx. 20):",
+            "Número de últimos jogos individuais a analisar (máx. 30):",
             min_value=1,
             max_value=30,
             value=30,
