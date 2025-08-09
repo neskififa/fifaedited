@@ -1563,7 +1563,7 @@ def app():
         initial_sidebar_state="expanded",
     )
 
-    st.title("🚀 Future Stats - FIFA 🔞")
+    st.title("Fifa Future")
     brasil_timezone = pytz.timezone("America/Sao_Paulo")
     current_time_br = datetime.now(brasil_timezone).strftime("%H:%M:%S")
     st.markdown(f"**Horário Atual:** {current_time_br}")
