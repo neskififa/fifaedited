@@ -956,7 +956,7 @@ def carregar_dados_ao_vivo(df_resultados: pd.DataFrame) -> tuple[pd.DataFrame, p
                     return f"{player_name}  1.5 Gols"
                 elif 3.50 <= avg_goals <= 4.50:
                     return f"{player_name}  2.5 Gols"
-                return "-"  # Or an empty string if you prefer no output for other ranges
+                return "Sem Entrada"  # Or an empty string if you prefer no output for other ranges
 
             over_mandante_text = get_over_text(m, gp_calc)
             over_visitante_text = get_over_text(v, gc_calc)
