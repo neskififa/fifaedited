@@ -952,11 +952,11 @@ def carregar_dados_ao_vivo(df_resultados: pd.DataFrame) -> tuple[pd.DataFrame, p
 
             # --- Nova lógica para "Over Mandante" e "Over Visitante" ---
             def get_over_text(player_name: str, avg_goals: float) -> str:
-                if 2.30 <= avg_goals <= 3.39:
+                if 2.50 <= avg_goals <= 3.50:
                     return f"{player_name}  1.5 Gols"
-                elif 3.40 <= avg_goals <= 4.50:
+                elif 3.50 <= avg_goals <= 4.50:
                     return f"{player_name}  2.5 Gols"
-                return "Instável"  # Or an empty string if you prefer no output for other ranges
+                return "-"  # Or an empty string if you prefer no output for other ranges
 
             over_mandante_text = get_over_text(m, gp_calc)
             over_visitante_text = get_over_text(v, gc_calc)
